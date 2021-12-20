@@ -10,7 +10,7 @@
         "get",
         "post"
       ],
-      "route": "nscsa/user/{name}"
+      "route": "nscsa/setuser/{name}"
     },
     {
       "type": "cosmosDB",
