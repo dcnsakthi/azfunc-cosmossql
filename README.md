@@ -93,16 +93,17 @@ function.json
         "get",
         "post"
       ],
-      "route": "nscsa/user/{name}"
+      "route": "nscsa/getusers"
     },
     {
       "type": "cosmosDB",
-      "direction": "out",
+      "direction": "in",
       "name": "doc",
       "databaseName": "solnarc",
       "collectionName": "users",
       "createIfNotExists": "true",
-      "connectionStringSetting": "AzureCosmosDBConnectionString"
+      "connectionStringSetting": "AzureCosmosDBConnectionString",
+      "sqlQuery": "SELECT * from c"
     },
     {
       "type": "http",
@@ -118,15 +119,15 @@ function.json
 
 Prerequisite: Attach to Python Functions by `Start Debugging or Press F5` and Web Browser.
 
-1. http URL request with Query Parameter (`http://localhost:7071/api/nscsa/user/?name=Azure`) using web browser <br>
-<img src=".images\HttpFunctionResponseWithParam.png" height=80 width=600 border=1><br>
+1. http URL request with Query Parameter (`http://localhost:7071/api/nscsa/getusers`) using web browser <br>
+<img src=".images\HttpFunctionResponseWithParamGetUser.png" height=100 width=600 border=1><br>
 
 ## 8. Test the function with http request and Query Parameter using Postman
 
 Prerequisite: Attach to Python Functions by `Start Debugging or Press F5` and Postman.
 
-1. http URL requset with Query Parameter (`http://localhost:7071/api/nscsa/user/Azure`) using Postman <br>
-<img src=".images\PostmanHttpRequestParam.png" height=200 width=600 border=1>
+1. http URL requset with Query Parameter (`http://localhost:7071/api/nscsa/getusers`) using Postman <br>
+<img src=".images\PostmanHttpRequestParamGetUsers.png" height=300 width=600 border=1>
 
 ## 9. Deploy to Azure Function using VSCode
 
@@ -144,7 +145,7 @@ Prerequisite: Successfully Build project (`http.csproj`) and Azure Subscription.
 
 Prerequisite: Successful deployment to Azure Function.
 
-1. http URL requset with Query Parameter (`https://nscsa.azurewebsites.net/api/nscsa/user/Azure`) using Postman <br>
+1. http URL requset with Query Parameter (`https://nscsa.azurewebsites.net/api/nscsa/getusers`) using Postman <br>
 <img src=".images\PostmanHttpAzureRequestParam.png" height=200 width=600 border=1><br>
 
 
@@ -153,14 +154,14 @@ Prerequisite: Successful deployment to Azure Function.
 Prerequisite: Azure Cosmos DB service and Collection.
 
 1. Login to Azure Portal and Navigate to Data Explorer of Cosmos DB service <br>
-<img src=".images\CosmosDBDataExplorer.png" height=200 width=600 border=1><br>
+<img src=".images\CosmosDBDataExplorer.png" height=300 width=600 border=1><br>
 
 
 ## 12. Commit and Push to GitHub
 
 Prerequisite: GitHub Repo and Windows Git.
 
-<img src=".images\CommitAndPushToRepo.png" height=650 width=650 border=1>
+<img src=".images\CommitAndPushToRepo.png" height=600 width=650 border=1>
 
 ## 13. Continuous Deployment to Azure Function using GitHub Action
 

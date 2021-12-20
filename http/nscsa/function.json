@@ -10,16 +10,17 @@
         "get",
         "post"
       ],
-      "route": "nscsa/user/{name}"
+      "route": "nscsa/getusers"
     },
     {
       "type": "cosmosDB",
-      "direction": "out",
+      "direction": "in",
       "name": "doc",
       "databaseName": "solnarc",
       "collectionName": "users",
       "createIfNotExists": "true",
-      "connectionStringSetting": "AzureCosmosDBConnectionString"
+      "connectionStringSetting": "AzureCosmosDBConnectionString",
+      "sqlQuery": "SELECT * from c"
     },
     {
       "type": "http",
